@@ -1,15 +1,41 @@
+#pragma once
+#include <iostream>
+#include <cstdlib>
 #include <array>
 #include <vector>
+#include <string>
 
 class Chess {
 public:
+    Chess() {
+        reset_board();
+    }
+    Chess(int n) : size(n) {
+        Chess();
+    }
+
     bool play();
+
+    /*
+     * removes everything
+     * default positions
+     */
+    void reset_board();
+
+    void show_board();
 
 private:
     std::array<std::vector<int>, 64> white_moves;
     std::array<std::vector<int>, 64> black_moves;
-    std::array<char, 64> board;
 
+    std::array<char, 64> white_board;
+    std::array<char, 64> black_board;
+    bool turn = true; // true = white turn
+
+    std::array<char, 8> black_row = {'r', 'k', 'b', 'q', 'w', 'b', 'k', 'r'};
+    std::array<char, 8> white_row = {'R', 'K', 'B', 'Q', 'W', 'B', 'K', 'R'};
+    
+    const int size = 10;
 /*
 board setup
     black side
